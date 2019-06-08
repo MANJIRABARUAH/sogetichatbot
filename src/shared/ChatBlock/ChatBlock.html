@@ -1,0 +1,11 @@
+<div>
+  <div :class="{ 'chat-block bot': this.sender === 'bot', 'chat-block user': this.sender === 'user'}">
+    <img v-if="this.sender === 'bot'" src="../../../resources/images/chatbot_bot_avatar.png" class="avatar" />
+    <img v-if="this.sender === 'user'" src="../../../resources/images/chatbot_user_avatar.png" class="avatar" />
+    <div :class="{ 'chatbox-container': this.sender === 'bot', 'chatbox-container user': this.sender === 'user'}">
+      <div :class="{ 'chatbox-bot': this.sender === 'bot', 'chatbox-user': this.sender === 'user'}">
+        <span v-html="this.message"></span>
+      </div>
+    </div>
+  </div>
+</div>

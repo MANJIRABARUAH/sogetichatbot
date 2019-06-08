@@ -1,0 +1,86 @@
+.chat-block {
+  margin-bottom: 22px;
+}
+
+.chat-block.bot {
+  display: flex;
+}
+
+.chat-block.user {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+/* --- Chatbox -------------------------------------------------------------- */
+
+.chatbox-container {
+  flex: 1;
+  align-self: flex-end;
+  text-align: left;
+  margin: 0 10px;
+}
+
+.chatbox-container.user {
+  text-align: right;
+}
+
+.chatbox-bot {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background-color: var(--inactive-color);
+  line-height: 22px;
+  font-size: 16px;
+}
+
+.chatbox-bot:after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: var(--inactive-color);
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-left: -20px;
+}
+
+.chatbox-user {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  text-align: right;
+  line-height: 22px;
+  font-size: 16px;
+  color: white;
+}
+
+.chatbox-user:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-bottom-color: var(--primary-color);
+  border-left: 0;
+  border-top: 0;
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+.avatar {
+  align-self: flex-end;
+  width: 54px;
+  height: 54px;
+  margin: 0;
+}

@@ -1,0 +1,39 @@
+.login img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.login-container {
+  margin: 203px 0 0 0;
+  padding: 0;
+}
+
+.login-section h1 {
+  font-size: 24px;
+}
+
+.login-section input[type='text'],
+.login-section input[type='password'] {
+  width: 290px;
+  margin-top: 23px;
+}
+
+.login-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.login-footer button {
+  width: 300px;
+  height: 55px;
+  margin: 0 auto 21px auto;
+  font-size: 17px;
+}
+
+.login-footer p {
+  margin: 10px auto 39px auto;
+  font-size: 14px;
+}

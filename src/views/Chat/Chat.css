@@ -1,0 +1,71 @@
+.chat-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 44px;
+  padding: 16px;
+}
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-bottom: 14px;
+}
+
+.flex-item {
+  width: 30%;
+  display: table;
+  padding-bottom: 8px;
+}
+
+.flex-item .option {
+  display: table-cell;
+  width: 88px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background-color: var(--primary-color);
+  line-height: 22px;
+  font-size: 16px;
+  color: #fff;
+}
+
+.btn-flat-primary.yes,
+.btn-flat-cancel.no {
+  width: 88px;
+  padding: 10px 14px;
+  line-height: 22px;
+  font-size: 16px;
+}
+
+.btn-flat-primary.yes {
+  margin-left: 72px;
+}
+
+.btn-flat-cancel.no {
+  margin-right: 72px;
+}
+
+.document-preview {
+  width: 80%;
+  border-radius: 30px;
+  border: solid 1px #000;
+  margin-bottom: 22px;
+}
+
+.move {
+  animation: slide-up 0.5s ease-out 1 normal;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(22px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.input-group {
+  position: relative;
+}

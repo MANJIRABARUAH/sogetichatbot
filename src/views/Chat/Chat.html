@@ -1,0 +1,89 @@
+<div>
+  <Header />
+  <!-- <div>{{ step }}</div> -->
+  <div class="chat-container">
+
+    <ChatBlock message="What kind of cost did you make?" class="move" sender="bot" />
+    <div v-show="step >= 1 && step < 3" class="flex-container move">
+      <div class="flex-item" @click="addDeclarationType(4, 'Food')">
+        <span class="option">Food</span>
+      </div>
+      <div class="flex-item" @click="addDeclarationType(4, 'Travel')">
+        <span class="option">Travel</span>
+      </div>
+      <div class="flex-item" @click="addDeclarationType(4, 'Training')">
+          <span class="option">Training</span>
+        </div>
+      <div class="flex-item" @click="addDeclarationType(4, 'Hotel')">
+          <span class="option">Hotel</span>
+        </div>
+      <div class="flex-item" @click="addDeclarationType(4, 'Gifts')">
+          <span class="option">Gifts</span>
+        </div>
+      <div class="flex-item" @click="addDeclarationType(4, 'Other')">
+          <span class="option">Other</span>
+        </div>
+    </div>
+
+    <ChatBlock v-show="step > 2" :message="declaration.type" class="move" sender="user" />
+    <ChatBlock v-show="step > 3" message="Where did you eat and was it with an extern or a colleague?" class="move" sender="bot" />
+    <ChatBlock v-show="step > 4" :message="whereDidYouEatAnswer" class="move" sender="user" />
+    <ChatBlock v-show="step > 4" message="Smeagol, Eindhoven with a client. Filled in!" class="move" sender="bot" />
+    <ChatBlock v-show="step > 4" message="How much did it cost?" class="move" sender="bot" />
+    <ChatBlock v-show="step > 7" :message="costIncurredAnswer" class="move" sender="user" />
+    <ChatBlock v-show="step > 7" message="When did you make this cost?" class="move" sender="bot" />
+    <ChatBlock v-show="step > 9" :message="dateAnswer" class="move" sender="user" />
+    <ChatBlock v-show="step > 9" message="Ok, noted!" class="move" sender="bot" />
+    <ChatBlock v-show="step > 9" message="Do you want to add documents?" class="move" sender="bot" />
+    <div v-show="step > 9 && step < 14" class="flex-container move">
+      <div class="button-right" @click="addDocument(14, true)">
+        <input type="file" accept="image/*" @change="loadFile" id="upload-hidden" hidden />
+        <button class="btn-flat-primary yes">Yes</button>
+      </div>
+      <div class="button-left" @click="addDocument(14, false)">
+        <button class="btn-flat-cancel no">No</button>
+      </div>
+    </div>
+    <ChatBlock v-show="step > 13" message="Yes" class="move" sender="user" />
+    <img id="output" v-show="step > 14" class="document-preview move" />
+    <ChatBlock v-show="step > 15" message="Received the document! You can now add a note to the declaration." class="move" sender="bot" />
+    <ChatBlock v-show="step > 18" message="Diner, that's all." class="move" sender="user" />
+    <ChatBlock v-show="step > 18" message="The form is complete! Take a look and let me know if you want to add or change something." class="move" sender="bot" />
+    <ChatBlock v-show="step > 20" message="Sent! Feel free to chat with me or you can leave the conversation." class="move" sender="bot" />
+        <div v-show="step === 21" class="flex-container move">
+            <div class="flex-item" @click="navigateTo('overview')">
+              <span class="option">Overview</span>
+            </div>
+            <div class="flex-item" @click="navigateTo('landing')">
+              <span class="option">Homepage</span>
+            </div>
+            <div class="flex-item" @click="navigateTo('declaration')">
+                <span class="option">Declaration</span>
+              </div>
+          </div>
+
+
+    <div class="input-group" v-show="step < 6 || step > 20" >
+      <input type="text" :disabled="chattingDisabled" v-on:keyup.enter.stop="addLocation(7, $event)" placeholder="Type here to chat" v-model="whereDidYouEatAnswer" />
+      <SendChatButton :disabled="chattingDisabled" v-on:click.native="addLocation(7, $event)" :text="whereDidYouEatAnswer"/>
+    </div>
+    <div class="input-group" v-show="step > 4 && step < 8" >
+      <input type="number" v-on:keyup.enter.stop="addCost(8, $event)" pattern="[0-9]*" v-model="costIncurredAnswer">
+      <SendChatButton v-on:click.native="addCost(8, $event)" :text="costIncurredAnswer"/>
+    </div>
+    <!-- <input v-show="step > 4 && step < 8" type="number" v-on:keyup.enter.stop="addCost(8, $event)"> -->
+    <!-- <input v-show="step > 7 && step < 10" type="date" v-on:keyup.enter.stop="addDate(10, $event)"> -->
+    <div class="input-group" v-show="step > 7 && step < 10">
+      <input type="date" v-on:keyup.enter.stop="addDate(10, $event)" v-model="dateAnswer">
+      <SendChatButton v-on:click.native="addDate(10, $event)" :text="dateAnswer"/>
+    </div>
+    
+    <!-- <button v-show="step > 13 && step < 16" class="btn-flat-primary" @click="openLoadFile()">Add Document</button> -->
+    <div class="input-group" v-show="step > 17 && step < 19">
+      <input  type="text" v-on:keyup.enter.stop="addNote(20, $event)" v-model="note">
+      <SendChatButton v-on:click.native="addNote(20, $event)" :text="note"/>
+    </div>
+    <button v-show="step > 19 && step < 21" class="btn-flat-primary" @click="showDeclarationOverview()">Open Form</button>
+
+  </div>
+</div>
