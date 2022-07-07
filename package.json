@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "es6-promise": "^4.2.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuejs-datatable": "^1.7.0",
